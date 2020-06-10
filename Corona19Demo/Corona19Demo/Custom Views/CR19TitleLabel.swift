@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CR19Label: UILabel {
+class CR19TitleLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,10 +19,10 @@ class CR19Label: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat, fontWeight: UIFont.Weight) {
+    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
         super.init(frame: .zero)
         self.textAlignment = textAlignment
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
+        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
         configure()
         
     }
@@ -30,9 +30,10 @@ class CR19Label: UILabel {
     private func configure() {
         textColor                   = .label
         adjustsFontSizeToFitWidth   = true
-        minimumScaleFactor          = 0.9
-        lineBreakMode               = .byTruncatingTail
+        minimumScaleFactor          = 0.8
+        lineBreakMode               = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
+        numberOfLines = 0
     }
     
     func changeFontColor(clr: UIColor) {

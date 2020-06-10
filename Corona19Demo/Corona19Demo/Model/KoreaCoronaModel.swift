@@ -1,5 +1,5 @@
 //
-//  CityCoronaModel.swift
+//  KoreaCoronaModel.swift
 //  Corona19Demo
 //
 //  Created by Sunmi on 2020/06/09.
@@ -9,77 +9,59 @@
 import Foundation
 
 
-//
-//struct StoreData: Codable {
-//
-//    enum CodingKeys: String, CodingKey {
-//        case storeState = "state"
-//        case storeInfo = "info"
-//        case storeSettings = "setting"
-//        case advertisement = "advertisement"
-//        case states = "stats"
-//        case dataOfUserLikes = "likeUsers"
-//        case menuGroups = "menuGroups"
-//        case isDeleted =  "isDeleted"
-//        case id = "_id"
-//        case createAt = "createdAt"
-//        case updateAt = "updatedAt"
-//        case owner = "owner"
-//
-//    }
-//    var storeState: StoreState
-//    var storeInfo: StoreInfo
-//    var storeSettings: StoreSettings
-//    var advertisement: Advertisement
-//    var states: Stats
-//    var dataOfUserLikes: [UserLikes]
-//    var menuGroups: [MenuGroups]
-//    var isDeleted: Bool
-//    var id: String?
-//    var createAt: String?
-//    var updateAt: String?
-//    var owner: String?
-//
-//}
-
-struct CityCoronaModel: Codable {
+struct KoreaCoronaModel: Codable {
     
     var resultCode: String
     var resultMessage: String
-    var korea: String
-    var seoul: String
-    var busan: String
-    var daegu: String
-    var incheon: String
-    var gwangju: String
-    var daejeon: String
-    var ulsan: String
-    var sejong: String
-    var gyeonggi: String
-    var gangwon: String
-    var chungbuk: String
-    var chungnam: String
-    var jeonbuk: String
-    var jeonnam: String
-    var gyeongbuk: String
-    var gyeongnam: String
-    var jeju: String
-    var
-    
-    
+    var korea: Korea
+    var seoul: Seoul
+    var busan: Busan
+    var daegu: Daegu
+    var incheon: Incheon
+    var gwangju: Gwangju
+    var daejeon: Daejeon
+    var ulsan: Ulsan
+    var sejong: Sejong
+    var gyeonggi: Gyeonggi
+    var gangwon: Gangwon
+    var chungbuk: Chungbuk
+    var chungnam: Chungnam
+    var jeonbuk: Jeonbuk
+    var jeonnam: Jeonnam
+    var gyeongbuk: Gyeongbuk
+    var gyeongnam: Gyeongnam
+    var jeju: Jeju
+    var quarantine: Quarantine
     
     enum CodingKeys: String, CodingKey {
         case resultCode
         case resultMessage
-        case korea
-        
-        
-        
+        case korea     = "korea"
+        case seoul     = "seoul"
+        case busan     = "busan"
+        case daegu     = "daegu"
+        case incheon   = "incheon"
+        case gwangju   = "gwangju"
+        case daejeon   = "daejeon"
+        case ulsan     = "ulsan"
+        case sejong    = "sejong"
+        case gyeonggi  = "gyeonggi"
+        case gangwon   = "gangwon"
+        case chungbuk  = "chungbuk"
+        case chungnam  = "chungnam"
+        case jeonbuk   = "jeonbuk"
+        case jeonnam   = "jeonnam"
+        case gyeongbuk = "gyeongbuk"
+        case gyeongnam = "gyeongnam"
+        case jeju      = "jeju"
+        case quarantine = "quarantine"
     }
     
+     
+      
 }
 
-struct KoreaData: Codable {
+struct Korea: Codable {
    var countryName: String
    var newCase: String
    var totalCase: String
@@ -161,4 +143,151 @@ struct Daejeon: Codable {
    var percentage: String
    var newFcase: String
    var newCcase: String
+}
+// MARK: - Ulsan
+struct Ulsan: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+// MARK: - Sejong
+struct Sejong: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+
+// MARK: - Gyeonggi
+struct Gyeonggi: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+
+// MARK: - Gangwon
+struct Gangwon: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+// MARK: - Chungbuk
+struct Chungbuk: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+// MARK: - Chungnam
+struct Chungnam: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+
+
+// MARK: - Jeonbuk
+struct Jeonbuk: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+// MARK: - Jeonnam
+struct Jeonnam: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+// MARK: - Gyeongbuk
+struct Gyeongbuk: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+// MARK: - Gyeongnam
+struct Gyeongnam: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+// MARK: - Jeju
+struct Jeju: Codable {
+   var countryName: String
+   var newCase: String
+   var totalCase: String
+   var recovered: String
+   var death: String
+   var percentage: String
+   var newFcase: String
+   var newCcase: String
+}
+
+// MARK: - Quarantine (격리자)
+struct Quarantine: Codable {
+    var countryName: String
+    var newCase: String
+    var totalCase: String
+    var recovered: String
+    var death: String
+    var percentage: String
+    var newFcase: String
+    var newCcase: String
 }

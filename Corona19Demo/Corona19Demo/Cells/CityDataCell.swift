@@ -1,5 +1,5 @@
 //
-//  CityCoronaCell.swift
+//  CityDataCell.swift
 //  Corona19Demo
 //
 //  Created by Sunmi on 2020/06/09.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class CityCoronaCell: UICollectionViewCell {
+class CityDataCell: UICollectionViewCell {
     
-    static let reuseID = "CityCoronaCell"
+    static let reuseIdentifier = "CityDataCell"
     
-    let citynameLabel = CR19Label(textAlignment: .left, fontSize: 15, fontWeight: .semibold)
-    let detailLabel = CR19Label(textAlignment: .left, fontSize: 12, fontWeight: .regular)
+    let citynameLabel = CR19TitleLabel(textAlignment: .left, fontSize: 15)
+    let detailLabel = CR19BodyLabel(textAlignment: .left)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,18 +26,14 @@ class CityCoronaCell: UICollectionViewCell {
         
     }
 
-    func update(coronaModel: CoronaCityModel) {
+    func set(model: SimpleCoronaModel) {
         
-        citynameLabel.text = coronaModel.countryName
+        citynameLabel.text = "\(model.countryName) (\(model.totalCase))"
         detailLabel.text = """
-                            확진자수: \(coronaModel.totalCase),
-                            완치자수: \(coronaModel.recovered),
-                            사망자: \(coronaModel.death),
-                            발생률: \(coronaModel.percentage),
-                            해외유입: \(coronaModel.newFcase),
-                            지역발생: \(coronaModel.newCcase)
+                            완치자: \(model.recovered), 사망자: \(model.death)
+                            발생률: \(model.percentage)
+                            해외유입: \(model.newFcase),지역발생: \(model.newCcase)
                            """
-        
         
     }
     
@@ -45,8 +41,9 @@ class CityCoronaCell: UICollectionViewCell {
         addSubview(citynameLabel)
         addSubview(detailLabel)
         
-        let padding: CGFloat = 8
+        let padding: CGFloat = 5
         
+       // detailLabel.setLineHeight(lineHeight: 0.75)
         // set layout: citynameLabel, detailLabel
         NSLayoutConstraint.activate([
             
@@ -54,13 +51,12 @@ class CityCoronaCell: UICollectionViewCell {
             citynameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
             citynameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             citynameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            citynameLabel.heightAnchor.constraint(equalToConstant: 75),
-            
+           // citynameLabel.heightAnchor.constraint(equalToConstant: 75),
             // detailLabel
-            detailLabel.topAnchor.constraint(equalTo: citynameLabel.bottomAnchor, constant: padding),
+            detailLabel.topAnchor.constraint(equalTo: citynameLabel.bottomAnchor, constant: 8),
             detailLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            detailLabel.heightAnchor.constraint(equalToConstant: 145)
+            //detailLabel.heightAnchor.constraint(equalToConstant: 145)
         
         ])
     }

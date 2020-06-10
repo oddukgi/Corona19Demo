@@ -1,5 +1,5 @@
 //
-//  coronaDataCollection.swift
+//  SimpleCoronaModel.swift
 //  Corona19Demo
 //
 //  Created by Sunmi on 2020/06/09.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CoronaData: Codable {
+struct SimpleCoronaModel: Codable, Hashable {
     var countryName: String
     var newCase: String
     var totalCase: String
