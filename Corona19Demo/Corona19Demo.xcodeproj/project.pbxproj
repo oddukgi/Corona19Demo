@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1200D4C1248F4A8E00C3D9AE /* CoronaDomesticListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1200D4C0248F4A8E00C3D9AE /* CoronaDomesticListVC.swift */; };
-		120A40232490F1C8001AA6FE /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120A40222490F1C8001AA6FE /* UILabel+Ext.swift */; };
 		120ADC5C248F492900FB9059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120ADC5B248F492900FB9059 /* AppDelegate.swift */; };
 		120ADC5E248F492900FB9059 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120ADC5D248F492900FB9059 /* SceneDelegate.swift */; };
 		120ADC65248F492A00FB9059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 120ADC64248F492A00FB9059 /* Assets.xcassets */; };
@@ -28,7 +27,6 @@
 
 /* Begin PBXFileReference section */
 		1200D4C0248F4A8E00C3D9AE /* CoronaDomesticListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaDomesticListVC.swift; sourceTree = "<group>"; };
-		120A40222490F1C8001AA6FE /* UILabel+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		120ADC58248F492900FB9059 /* Corona19Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Corona19Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		120ADC5B248F492900FB9059 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		120ADC5D248F492900FB9059 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 		12B60CC1248F8403000B3210 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				120A40222490F1C8001AA6FE /* UILabel+Ext.swift */,
 				12B60CBF248F83F8000B3210 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
@@ -222,7 +219,6 @@
 				12B60CC0248F83F8000B3210 /* UIViewController+Ext.swift in Sources */,
 				12B60CBB248F81F2000B3210 /* ErrorMessage.swift in Sources */,
 				120ADC5C248F492900FB9059 /* AppDelegate.swift in Sources */,
-				120A40232490F1C8001AA6FE /* UILabel+Ext.swift in Sources */,
 				12B60CBE248F8209000B3210 /* NetworkManager.swift in Sources */,
 				12B60CC8248F85E4000B3210 /* CR19BodyLabel.swift in Sources */,
 				12B60CC4248F8486000B3210 /* CR19AlertVC.swift in Sources */,

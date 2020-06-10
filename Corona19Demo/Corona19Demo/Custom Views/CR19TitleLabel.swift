@@ -30,10 +30,9 @@ class CR19TitleLabel: UILabel {
     private func configure() {
         textColor                   = .label
         adjustsFontSizeToFitWidth   = true
-        minimumScaleFactor          = 0.8
-        lineBreakMode               = .byWordWrapping
+        minimumScaleFactor          = 0.9
+        lineBreakMode               = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints = false
-        numberOfLines = 0
     }
     
     func changeFontColor(clr: UIColor) {

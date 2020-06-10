@@ -29,17 +29,13 @@ class CR19BodyLabel: UILabel {
         textColor                    = .secondaryLabel
         font                         = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth    = true
-        minimumScaleFactor           = 0.7
-       // setLineHeight(lineHeight: 0.2)
+        minimumScaleFactor           = 0.75
         lineBreakMode                = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
-        numberOfLines = 0
-        // Pass value for any one argument - lineSpacing or lineHeightMultiple
-
     }
     
     func changeFontColor(clr: UIColor) {
         textColor = clr
     }
-    
+
 }
