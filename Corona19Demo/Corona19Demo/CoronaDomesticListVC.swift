@@ -14,25 +14,8 @@ import UIKit
 
 class CoronaDomesticListVC: UIViewController {
 
-    
-    enum SectionLayoutKind: Int, CaseIterable {
-        case header, grid
-        
-        var columnCount: Int {
-            switch self {
-                case .header:
-                    return 1
-                case .grid:
-                    return 2
-                
-            }
-        }
-        
-        
-        
-    }
 
-    var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, SimpleCoronaModel>! = nil
+    var dataSource: UICollectionViewDiffableDataSource<Int, SimpleCoronaModel>! = nil
     var coronaCollectionView: UICollectionView! = nil
     
     var arrayData: [SimpleCoronaModel] = []
@@ -58,9 +41,6 @@ extension CoronaDomesticListVC {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int,
             layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
 
-            guard let sectionLayoutKind = SectionLayoutKind(rawValue: sectionIndex) else { return nil }
-            let columns = sectionLayoutKind.columnCount
-
             // The group auto-calculates the actual item width to make
             // the requested number of columns fit, so this widthDimension is ignored.
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -68,22 +48,21 @@ extension CoronaDomesticListVC {
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
 
-            let groupHeight = columns == 1 ?
-            NSCollectionLayoutDimension.absolute(90) :
-                NSCollectionLayoutDimension.absolute(90)
-            
-            
+            let groupHeight = sectionIndex == 0 ?
+                            NSCollectionLayoutDimension.absolute(99) :
+                            NSCollectionLayoutDimension.absolute(125)
+  
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: groupHeight)
             let group: NSCollectionLayoutGroup!
             
-            if sectionLayoutKind == .header {
-                group = NSCollectionLayoutGroup.vertical(layoutSize:  groupSize, subitem: item, count: 1)
+            if sectionIndex == 0 {
+                group = NSCollectionLayoutGroup.horizontal(layoutSize:  groupSize, subitem: item, count: 1)
             }
             else {
                 group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-                
             }
+            
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
                       
@@ -109,7 +88,10 @@ extension CoronaDomesticListVC {
     }
 
     func getCoronaModel() {
-        NetworkManager.shared.getCoronaData() { result in
+        NetworkManager.shared.getCoronaData() { [weak self] result in
+            
+            // why?  memory leak , so [weak self]
+            guard let self = self else { return }
             
             // straightforward, easy to understand
             switch result {
@@ -130,19 +112,15 @@ extension CoronaDomesticListVC {
     func configureDataSource() {
         
         // city corona data
-        dataSource = UICollectionViewDiffableDataSource<SectionLayoutKind, SimpleCoronaModel>(collectionView: coronaCollectionView,cellProvider: { (collectionView, indexPath, coronaData) -> UICollectionViewCell? in
-          
-            let section = SectionLayoutKind(rawValue: indexPath.section)!
+        dataSource = UICollectionViewDiffableDataSource<Int, SimpleCoronaModel>(collectionView: coronaCollectionView,cellProvider: { (collectionView, indexPath, coronaData) -> UICollectionViewCell? in
             
-            
-            if section == .header  {
+            if indexPath.section == 0  {
                
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KoreaDataCell.reuseIdentifier, for: indexPath) as? KoreaDataCell {
                     cell.set(model: self.firstData)
                     cell.contentView.layer.borderColor = UIColor.lightGray.cgColor
                     cell.contentView.layer.borderWidth = 1
                     cell.contentView.layer.cornerRadius = 8
-                    
                     
                     return cell
                     
@@ -173,13 +151,14 @@ extension CoronaDomesticListVC {
     }
     
     func updateData() {
-        var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, SimpleCoronaModel>()
-       
-        SectionLayoutKind.allCases.forEach {
-            snapshot.appendSections([$0])
+        var snapshot = NSDiffableDataSourceSnapshot<Int, SimpleCoronaModel>()
+        let sections = Array(0..<2)
+  
+        for section in sections {
+            snapshot.appendSections([section])
+            section == 0 ? snapshot.appendItems([firstData]): snapshot.appendItems(arrayData)
         }
-        
-        snapshot.appendItems(arrayData)
+
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
     }
 
