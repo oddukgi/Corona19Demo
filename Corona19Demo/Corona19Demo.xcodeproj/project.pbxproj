@@ -13,6 +13,7 @@
 		120ADC65248F492A00FB9059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 120ADC64248F492A00FB9059 /* Assets.xcassets */; };
 		120ADC68248F492A00FB9059 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 120ADC66248F492A00FB9059 /* LaunchScreen.storyboard */; };
 		12269BAA248F63D200CC4D95 /* KoreaCoronaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12269BA9248F63D200CC4D95 /* KoreaCoronaModel.swift */; };
+		1232B583249105350081FF13 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232B582249105350081FF13 /* UILabel+Ext.swift */; };
 		12B60CB0248F6FCF000B3210 /* CityDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CAF248F6FCF000B3210 /* CityDataCell.swift */; };
 		12B60CB3248F70A9000B3210 /* CR19TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CB2248F70A9000B3210 /* CR19TitleLabel.swift */; };
 		12B60CB9248F7AC9000B3210 /* KoreaDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CB8248F7AC9000B3210 /* KoreaDataCell.swift */; };
@@ -34,6 +35,7 @@
 		120ADC67248F492A00FB9059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		120ADC69248F492A00FB9059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12269BA9248F63D200CC4D95 /* KoreaCoronaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaCoronaModel.swift; sourceTree = "<group>"; };
+		1232B582249105350081FF13 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		12B60CAF248F6FCF000B3210 /* CityDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataCell.swift; sourceTree = "<group>"; };
 		12B60CB2248F70A9000B3210 /* CR19TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR19TitleLabel.swift; sourceTree = "<group>"; };
 		12B60CB8248F7AC9000B3210 /* KoreaDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaDataCell.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				12B60CBF248F83F8000B3210 /* UIViewController+Ext.swift */,
+				1232B582249105350081FF13 /* UILabel+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				12B60CC0248F83F8000B3210 /* UIViewController+Ext.swift in Sources */,
 				12B60CBB248F81F2000B3210 /* ErrorMessage.swift in Sources */,
 				120ADC5C248F492900FB9059 /* AppDelegate.swift in Sources */,
+				1232B583249105350081FF13 /* UILabel+Ext.swift in Sources */,
 				12B60CBE248F8209000B3210 /* NetworkManager.swift in Sources */,
 				12B60CC8248F85E4000B3210 /* CR19BodyLabel.swift in Sources */,
 				12B60CC4248F8486000B3210 /* CR19AlertVC.swift in Sources */,
@@ -371,6 +375,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sun.Corona19Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -389,6 +394,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sun.Corona19Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

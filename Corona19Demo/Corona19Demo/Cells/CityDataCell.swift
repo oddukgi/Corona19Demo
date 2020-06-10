@@ -28,14 +28,13 @@ class CityDataCell: UICollectionViewCell {
 
     func set(model: SimpleCoronaModel) {
         
-        citynameLabel.text = model.countryName
+        citynameLabel.text = "\(model.countryName) (\(model.totalCase))"
         detailLabel.text = """
-                            확진자수: \(model.totalCase),\n
-                            완치자수: \(model.recovered),사망자: \(model.death),\n
-                            발생률: \(model.percentage),해외유입: \(model.newFcase),\n
-                            지역발생: \(model.newCcase)
+                            완치자: \(model.recovered), 사망자: \(model.death)
+                            발생률: \(model.percentage)
+                            해외유입: \(model.newFcase),지역발생: \(model.newCcase)
                            """
-    
+        
     }
     
     private func configure() {
@@ -44,6 +43,7 @@ class CityDataCell: UICollectionViewCell {
         
         let padding: CGFloat = 5
         
+       // detailLabel.setLineHeight(lineHeight: 0.75)
         // set layout: citynameLabel, detailLabel
         NSLayoutConstraint.activate([
             
@@ -62,3 +62,4 @@ class CityDataCell: UICollectionViewCell {
     }
     
 }
+
