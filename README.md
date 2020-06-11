@@ -23,11 +23,6 @@ Data shows by region. (Seoul, Daegu, Jeju)
 - v1.0 - upload initial app
 - v1.1 - modify text style and update code
 
-## To-Do
-- [X] Create Intial UI using code
-- [X] Parsing Json Data and mapping structure 
-- [ ] Display data in UICollectionView
-
 ## UI 
 This app will change design while on developing.
 

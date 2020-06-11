@@ -12,7 +12,6 @@
 		120ADC5E248F492900FB9059 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120ADC5D248F492900FB9059 /* SceneDelegate.swift */; };
 		120ADC65248F492A00FB9059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 120ADC64248F492A00FB9059 /* Assets.xcassets */; };
 		120ADC68248F492A00FB9059 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 120ADC66248F492A00FB9059 /* LaunchScreen.storyboard */; };
-		12269BAA248F63D200CC4D95 /* KoreaCoronaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12269BA9248F63D200CC4D95 /* KoreaCoronaModel.swift */; };
 		1232B583249105350081FF13 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232B582249105350081FF13 /* UILabel+Ext.swift */; };
 		12B60CB0248F6FCF000B3210 /* CityDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CAF248F6FCF000B3210 /* CityDataCell.swift */; };
 		12B60CB3248F70A9000B3210 /* CR19TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CB2248F70A9000B3210 /* CR19TitleLabel.swift */; };
@@ -34,7 +33,6 @@
 		120ADC64248F492A00FB9059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		120ADC67248F492A00FB9059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		120ADC69248F492A00FB9059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		12269BA9248F63D200CC4D95 /* KoreaCoronaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaCoronaModel.swift; sourceTree = "<group>"; };
 		1232B582249105350081FF13 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		12B60CAF248F6FCF000B3210 /* CityDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataCell.swift; sourceTree = "<group>"; };
 		12B60CB2248F70A9000B3210 /* CR19TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR19TitleLabel.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 		12269BA6248F61C200CC4D95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				12269BA9248F63D200CC4D95 /* KoreaCoronaModel.swift */,
 				12B60CCB248F9080000B3210 /* SimpleCoronaModel.swift */,
 			);
 			path = Model;
@@ -230,7 +227,6 @@
 				120ADC5E248F492900FB9059 /* SceneDelegate.swift in Sources */,
 				1200D4C1248F4A8E00C3D9AE /* CoronaDomesticListVC.swift in Sources */,
 				12B60CC6248F857D000B3210 /* CR19Button.swift in Sources */,
-				12269BAA248F63D200CC4D95 /* KoreaCoronaModel.swift in Sources */,
 				12B60CB3248F70A9000B3210 /* CR19TitleLabel.swift in Sources */,
 				12B60CCC248F9080000B3210 /* SimpleCoronaModel.swift in Sources */,
 			);

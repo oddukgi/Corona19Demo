@@ -92,8 +92,6 @@ extension CoronaDomesticListVC {
             
             // why?  memory leak , so [weak self]
             guard let self = self else { return }
-            
-            // straightforward, easy to understand
             switch result {
             case .success(let data):
                 self.arrayData = data
