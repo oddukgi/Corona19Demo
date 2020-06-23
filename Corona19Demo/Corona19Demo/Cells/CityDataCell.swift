@@ -26,7 +26,7 @@ class CityDataCell: UICollectionViewCell {
         
     }
 
-    func set(model: SimpleCoronaModel) {
+    func set(model: CoronaModel) {
         
         citynameLabel.text = "\(model.countryName) (\(model.totalCase))"
         detailLabel.text = """

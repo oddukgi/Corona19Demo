@@ -13,6 +13,7 @@
 		120ADC65248F492A00FB9059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 120ADC64248F492A00FB9059 /* Assets.xcassets */; };
 		120ADC68248F492A00FB9059 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 120ADC66248F492A00FB9059 /* LaunchScreen.storyboard */; };
 		1232B583249105350081FF13 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232B582249105350081FF13 /* UILabel+Ext.swift */; };
+		1264986124A21610009AE050 /* CR19EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264986024A21610009AE050 /* CR19EmptyStateView.swift */; };
 		12B60CB0248F6FCF000B3210 /* CityDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CAF248F6FCF000B3210 /* CityDataCell.swift */; };
 		12B60CB3248F70A9000B3210 /* CR19TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CB2248F70A9000B3210 /* CR19TitleLabel.swift */; };
 		12B60CB9248F7AC9000B3210 /* KoreaDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CB8248F7AC9000B3210 /* KoreaDataCell.swift */; };
@@ -34,6 +35,7 @@
 		120ADC67248F492A00FB9059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		120ADC69248F492A00FB9059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1232B582249105350081FF13 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		1264986024A21610009AE050 /* CR19EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR19EmptyStateView.swift; sourceTree = "<group>"; };
 		12B60CAF248F6FCF000B3210 /* CityDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataCell.swift; sourceTree = "<group>"; };
 		12B60CB2248F70A9000B3210 /* CR19TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR19TitleLabel.swift; sourceTree = "<group>"; };
 		12B60CB8248F7AC9000B3210 /* KoreaDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaDataCell.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				12B60CB2248F70A9000B3210 /* CR19TitleLabel.swift */,
 				12B60CC7248F85E4000B3210 /* CR19BodyLabel.swift */,
 				12B60CC5248F857D000B3210 /* CR19Button.swift */,
+				1264986024A21610009AE050 /* CR19EmptyStateView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				12B60CC8248F85E4000B3210 /* CR19BodyLabel.swift in Sources */,
 				12B60CC4248F8486000B3210 /* CR19AlertVC.swift in Sources */,
 				12B60CB9248F7AC9000B3210 /* KoreaDataCell.swift in Sources */,
+				1264986124A21610009AE050 /* CR19EmptyStateView.swift in Sources */,
 				120ADC5E248F492900FB9059 /* SceneDelegate.swift in Sources */,
 				1200D4C1248F4A8E00C3D9AE /* CoronaDomesticListVC.swift in Sources */,
 				12B60CC6248F857D000B3210 /* CR19Button.swift in Sources */,

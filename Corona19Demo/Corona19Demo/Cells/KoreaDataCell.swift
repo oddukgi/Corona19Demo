@@ -38,7 +38,7 @@ class KoreaDataCell: UICollectionViewCell {
           infoLabel.textColor = UIColor.systemBlue
       }
     
-     func set(model: SimpleCoronaModel) {
+     func set(model: CoronaModel) {
          
        infoLabel.text = "대한민국 \n 확진자: \(model.totalCase), 완치자: \(model.recovered), 사망자: \(model.death)"
      

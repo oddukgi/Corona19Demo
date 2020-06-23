@@ -48,10 +48,10 @@ class NetworkManager {
     private init() {}
     
     // return : [Follower]
-    func getCoronaData(completed: @escaping (Result<[SimpleCoronaModel], GFError>) -> Void) {
+    func getCoronaData(completed: @escaping (Result<[CoronaModel], GFError>) -> Void) {
         let endpoint = baseURL
     
-        var coronaArray = Array<SimpleCoronaModel>()
+        var coronaArray = Array<CoronaModel>()
         // background thread
         guard let url = URL(string: endpoint) else {
             
@@ -90,7 +90,7 @@ class NetworkManager {
                             
                             if let parsedData = value as? [String: String] {
                                 
-                            let model = SimpleCoronaModel(countryName: parsedData["countryName"]!, newCase: parsedData["newCase"]!, totalCase: parsedData["totalCase"]!, recovered:  parsedData["recovered"]!, death: parsedData["death"]!, percentage: parsedData["percentage"]!, newFcase: parsedData["newFcase"]!, newCcase: parsedData["newCcase"]!)
+                            let model = CoronaModel(countryName: parsedData["countryName"]!, newCase: parsedData["newCase"]!, totalCase: parsedData["totalCase"]!, recovered:  parsedData["recovered"]!, death: parsedData["death"]!, percentage: parsedData["percentage"]!, newFcase: parsedData["newFcase"]!, newCcase: parsedData["newCcase"]!)
                                 coronaArray.append(model)
                                 
                              }

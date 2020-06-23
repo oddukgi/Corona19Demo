@@ -12,22 +12,33 @@ import UIKit
 // show Number of people by cities and provinces
 // searchbar get city name and provinces
 
+
 class CoronaDomesticListVC: UIViewController {
 
 
-    var dataSource: UICollectionViewDiffableDataSource<Int, SimpleCoronaModel>! = nil
+    var dataSource: UICollectionViewDiffableDataSource<Int, CoronaModel>! = nil
+    var searchBar: UISearchBar!
     var coronaCollectionView: UICollectionView! = nil
     
-    var arrayData: [SimpleCoronaModel] = []
-    var firstData: SimpleCoronaModel!
+    var arrayData: [CoronaModel] = []
+    var filteredCoronaModel: [CoronaModel] = []
+    var firstData: CoronaModel!
+    var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createSearchController()
         configureHierarchy()
         getCoronaModel()
         configureDataSource()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+     
 
 }
 
@@ -64,7 +75,7 @@ extension CoronaDomesticListVC {
             }
             
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 10, trailing: 10)
                       
             return section
         }
@@ -75,6 +86,7 @@ extension CoronaDomesticListVC {
 
 extension CoronaDomesticListVC {
     
+    
     func configureHierarchy() {
       view.backgroundColor = .systemBackground
       coronaCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
@@ -82,8 +94,16 @@ extension CoronaDomesticListVC {
       coronaCollectionView.backgroundColor = .systemBackground
       coronaCollectionView.register(KoreaDataCell.self, forCellWithReuseIdentifier: KoreaDataCell.reuseIdentifier)
       coronaCollectionView.register(CityDataCell.self, forCellWithReuseIdentifier: CityDataCell.reuseIdentifier)
-
       view.addSubview(coronaCollectionView)
+      coronaCollectionView.translatesAutoresizingMaskIntoConstraints = false
+   
+        NSLayoutConstraint.activate([
+            coronaCollectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor , constant: 10),
+            coronaCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            coronaCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            coronaCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+
+        ])
 
     }
 
@@ -94,10 +114,19 @@ extension CoronaDomesticListVC {
             guard let self = self else { return }
             switch result {
             case .success(let data):
+        
                 self.arrayData = data
+                let message = "⚠️ No data and check network status!"
+                
+                if self.arrayData.isEmpty {
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                    }
+                }
+
                 self.firstData = self.arrayData.first
                 self.arrayData.remove(at: 0)
-                self.updateData()
+                self.updateData(on: self.arrayData)
 
             case .failure(let error):
                 print(error.rawValue)
@@ -110,7 +139,7 @@ extension CoronaDomesticListVC {
     func configureDataSource() {
         
         // city corona data
-        dataSource = UICollectionViewDiffableDataSource<Int, SimpleCoronaModel>(collectionView: coronaCollectionView,cellProvider: { (collectionView, indexPath, coronaData) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Int, CoronaModel>(collectionView: coronaCollectionView,cellProvider: { (collectionView, indexPath, coronaData) -> UICollectionViewCell? in
             
             if indexPath.section == 0  {
                
@@ -148,17 +177,57 @@ extension CoronaDomesticListVC {
 
     }
     
-    func updateData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, SimpleCoronaModel>()
+    func updateData(on data: [CoronaModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, CoronaModel>()
         let sections = Array(0..<2)
   
         for section in sections {
             snapshot.appendSections([section])
-            section == 0 ? snapshot.appendItems([firstData]): snapshot.appendItems(arrayData)
+            section == 0 ? snapshot.appendItems([firstData]): snapshot.appendItems(data)
         }
 
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
     }
-
+    
+    // create search bar
+    // feature : show keyword area
+    func createSearchController() {
+        
+        //IF you want frame replace first line and comment "searchBar.sizeToFit()"
+        searchBar = UISearchBar()
+        searchBar.searchBarStyle = UISearchBar.Style.prominent
+        searchBar.placeholder = "지역이름을 입력하세요!"
+        searchBar.showsCancelButton = true
+        searchBar.delegate = self
+        view.addSubview(searchBar)//Here change your view name
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        let width = view.frame.width - 30
+        
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            searchBar.heightAnchor.constraint(equalToConstant: 50),
+            searchBar.widthAnchor.constraint(equalToConstant: width)
+        ])
+        
+    }
+    
+ 
 }
+//countryName
+extension CoronaDomesticListVC: UISearchBarDelegate {
 
+    func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String) {
+        if textSearched.isEmpty { return }
+        isSearching = true
+        filteredCoronaModel = arrayData.filter { $0.countryName.contains(textSearched) }
+        updateData(on: filteredCoronaModel)
+        
+    }
+     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+         isSearching = false
+         updateData(on: arrayData)
+        
+     }
+    
+}
