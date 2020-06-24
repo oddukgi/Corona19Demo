@@ -17,7 +17,11 @@ Data shows by region. (Seoul, Daegu, Jeju)
 - [X] Modify label text style (font size, line height)
 
 ## Screenshot
-![CoronaDemo19Screenshot.png](img/CoronaDemo19Screenshot.png)
+
+<p float="left">
+  <img src="./img/Screenshot.png" width="350"/>
+  <img src="./img/ScreenshotWithSearchBar.png" width="350"/> 
+</p>
 
 ## Version 
 - v1.0 - upload initial app
@@ -27,4 +31,4 @@ Data shows by region. (Seoul, Daegu, Jeju)
 This app will change design while on developing.
 
 ## Author
-sunmiya5 😎 (sm.kang666@gmail.com)
+oddukgi 😎 (sm.kang666@gmail.com)
