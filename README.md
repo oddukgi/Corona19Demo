@@ -19,7 +19,6 @@ Data shows by region. (Seoul, Daegu, Jeju)
 ## Screenshot
 
 <p float="left">
-  <img src="./img/Screenshot.png"/>
   <img src="./img/ScreenshotWithSearchBar.png"/> 
 </p>
 
