@@ -49,5 +49,5 @@ class CR19EmptyStateView: UIView {
           logoImageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 90)
       ])
     }
-    
+
 }

@@ -87,13 +87,13 @@
 		120ADC5A248F492900FB9059 /* Corona19Demo */ = {
 			isa = PBXGroup;
 			children = (
-				1200D4C0248F4A8E00C3D9AE /* CoronaDomesticListVC.swift */,
 				12B60CC1248F8403000B3210 /* Extensions */,
 				12B60CBC248F81FB000B3210 /* Manager */,
 				12B60CB1248F7082000B3210 /* Utility */,
 				12269BA6248F61C200CC4D95 /* Model */,
 				1200D4C2248F4F5600C3D9AE /* Cells */,
 				12B60CC2248F8464000B3210 /* Custom Views */,
+				1200D4C0248F4A8E00C3D9AE /* CoronaDomesticListVC.swift */,
 				120ADC5B248F492900FB9059 /* AppDelegate.swift */,
 				120ADC5D248F492900FB9059 /* SceneDelegate.swift */,
 				120ADC64248F492A00FB9059 /* Assets.xcassets */,
@@ -379,7 +379,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sun.Corona19Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -398,7 +398,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sun.Corona19Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

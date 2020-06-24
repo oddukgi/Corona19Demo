@@ -19,11 +19,11 @@ extension UIViewController {
         }
     }
     
-    
-    func showEmptyStateView(with message: String, in view: UIView) {
-        let emptyStateView = CR19EmptyStateView(message: message)
-        emptyStateView.frame = view.bounds
-        view.addSubview(emptyStateView)
-    }
+//    
+//    func showEmptyStateView(with message: String, in view: UIView) {
+//        let emptyStateView = CR19EmptyStateView(message: message)
+//        emptyStateView.frame = view.bounds
+//        view.addSubview(emptyStateView)
+//    }
 }
 

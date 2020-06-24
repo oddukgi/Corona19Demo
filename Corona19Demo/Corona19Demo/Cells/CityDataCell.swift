@@ -12,7 +12,7 @@ class CityDataCell: UICollectionViewCell {
     
     static let reuseIdentifier = "CityDataCell"
     
-    let citynameLabel = CR19TitleLabel(textAlignment: .left, fontSize: 15)
+    let citynameLabel = CR19TitleLabel(textAlignment: .left, fontSize: 13)
     let detailLabel = CR19BodyLabel(textAlignment: .left)
     
     override init(frame: CGRect) {

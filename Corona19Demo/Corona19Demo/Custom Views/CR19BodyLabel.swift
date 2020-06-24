@@ -27,7 +27,8 @@ class CR19BodyLabel: UILabel {
     
     private func configure() {
         textColor                    = .secondaryLabel
-        font                         = UIFont.preferredFont(forTextStyle: .body)
+        font                         = UIFont.systemFont(ofSize: 15, weight: .regular)
+        
         adjustsFontSizeToFitWidth    = true
         minimumScaleFactor           = 0.7
        // setLineHeight(lineHeight: 0.2)

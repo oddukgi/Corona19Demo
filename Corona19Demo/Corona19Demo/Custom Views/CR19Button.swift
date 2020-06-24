@@ -19,10 +19,18 @@ class CR19Button: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(backgroundClr: UIColor, title: String) {
+    init(backgroundClr: UIColor = .systemBackground, title: String = "", imageName: String = "") {
         super.init(frame: .zero)
         self.backgroundColor = backgroundClr
-        self.setTitle(title, for: .normal)
+        
+        if !title.isEmpty {
+            self.setTitle(title, for: .normal)
+        } else {
+            // set image
+            let image = UIImage(named: imageName)!
+            setImage(image, for: .normal)
+            
+        }
         configure()
     }
     private func configure() {

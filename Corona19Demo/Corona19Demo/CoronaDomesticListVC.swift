@@ -24,10 +24,16 @@ class CoronaDomesticListVC: UIViewController {
     var filteredCoronaModel: [CoronaModel] = []
     var firstData: CoronaModel!
     var isSearching = false
+    var refreshButton = CR19Button(imageName: "Refresh")
+    var searchKeyword = ""
+    var emptyStateView: CR19EmptyStateView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         createSearchController()
+        createDismissKeyboard()
+        createRefreshButton()
         configureHierarchy()
         getCoronaModel()
         configureDataSource()
@@ -47,7 +53,6 @@ extension CoronaDomesticListVC {
     
     /// - Tag: Seperate Section
     
-    
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int,
             layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
@@ -61,7 +66,7 @@ extension CoronaDomesticListVC {
 
             let groupHeight = sectionIndex == 0 ?
                             NSCollectionLayoutDimension.absolute(99) :
-                            NSCollectionLayoutDimension.absolute(125)
+                            NSCollectionLayoutDimension.absolute(115)
   
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: groupHeight)
@@ -75,7 +80,7 @@ extension CoronaDomesticListVC {
             }
             
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 10, trailing: 10)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
                       
             return section
         }
@@ -106,7 +111,24 @@ extension CoronaDomesticListVC {
         ])
 
     }
+    
+    func showEmptyStateView(with message: String, in view: UIView) {
+        emptyStateView = CR19EmptyStateView(message: message)
+        emptyStateView.frame = view.bounds
+        view.addSubview(emptyStateView)
+        
+        
+    }
+    
+    func hideEmptyStateView(_ isVisible: Bool) {
+        
+        guard parent != nil else {
+            return
+        }
 
+        willMove(toParent: nil)
+        emptyStateView.removeFromSuperview()
+    }
     func getCoronaModel() {
         NetworkManager.shared.getCoronaData() { [weak self] result in
             
@@ -115,25 +137,39 @@ extension CoronaDomesticListVC {
             switch result {
             case .success(let data):
         
-                self.arrayData = data
-                let message = "⚠️ No data and check network status!"
-                
-                if self.arrayData.isEmpty {
-                    DispatchQueue.main.async {
-                        self.showEmptyStateView(with: message, in: self.view)
-                    }
+                DispatchQueue.main.async {
+                    self.hideEmptyStateView(true)
+                    self.checkHiddenResource(false)
                 }
-
+                self.arrayData = data
                 self.firstData = self.arrayData.first
                 self.arrayData.remove(at: 0)
                 self.updateData(on: self.arrayData)
 
             case .failure(let error):
                 print(error.rawValue)
-                self.presentAlertOnMainThread(title: "Bad Case", message: error.rawValue, buttonTitle: "OK")
+                
+                let message = "⚠️ No data and check network status!"
+                  
+                if self.arrayData.isEmpty {
+                   DispatchQueue.main.async {
+                    
+                    self.checkHiddenResource(true)
+                    self.showEmptyStateView(with: message, in: self.view)
+                   }
+               }
+                
+                self.presentAlertOnMainThread(title: "Check Network Connection", message: "Data didn't comes!\n Please connect wifi or Celluar",buttonTitle: "OK")
 
+                
             }
         }
+    }
+    
+    func checkHiddenResource(_ isVisible: Bool) {
+        
+        self.coronaCollectionView.isHidden = isVisible
+        self.searchBar.isHidden = isVisible
     }
     
     func configureDataSource() {
@@ -194,22 +230,48 @@ extension CoronaDomesticListVC {
     func createSearchController() {
         
         //IF you want frame replace first line and comment "searchBar.sizeToFit()"
-        searchBar = UISearchBar()
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 50, width: UIScreen.main.bounds.width - 80, height: 60))
+
         searchBar.searchBarStyle = UISearchBar.Style.prominent
         searchBar.placeholder = "지역이름을 입력하세요!"
-        searchBar.showsCancelButton = true
+      //  searchBar.showsCancelButton = true
         searchBar.delegate = self
+        searchBar.isTranslucent = false
         view.addSubview(searchBar)//Here change your view name
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        let width = view.frame.width - 30
+    }
+    
+    func createDismissKeyboard() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func createRefreshButton() {
+        view.addSubview(refreshButton)
+        refreshButton.translatesAutoresizingMaskIntoConstraints = false
+        refreshButton.addTarget(self, action: #selector(refreshList), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            searchBar.heightAnchor.constraint(equalToConstant: 50),
-            searchBar.widthAnchor.constraint(equalToConstant: width)
+            refreshButton.topAnchor.constraint(equalTo: searchBar.topAnchor),
+            refreshButton.leadingAnchor.constraint(equalTo: searchBar.trailingAnchor),
+            refreshButton.widthAnchor.constraint(equalToConstant: 60),
+            refreshButton.heightAnchor.constraint(equalToConstant: 60)
         ])
+    }
+    
+    /*
+     arrayData
+     filteredCoronaMode*/
+    @objc func refreshList() {
         
+        if !arrayData.isEmpty {
+            arrayData.removeAll()
+        }
+        
+        if !filteredCoronaModel.isEmpty {
+            filteredCoronaModel.removeAll()
+        }
+        
+        getCoronaModel()
     }
     
  
@@ -218,8 +280,13 @@ extension CoronaDomesticListVC {
 extension CoronaDomesticListVC: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String) {
-        if textSearched.isEmpty { return }
+        guard !textSearched.isEmpty else {
+            searchKeyword.removeAll()
+            updateData(on: arrayData)
+            return
+        }
         isSearching = true
+        searchKeyword = textSearched
         filteredCoronaModel = arrayData.filter { $0.countryName.contains(textSearched) }
         updateData(on: filteredCoronaModel)
         
