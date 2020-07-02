@@ -142,8 +142,12 @@ extension CoronaDomesticListVC {
                     self.checkHiddenResource(false)
                 }
                 self.arrayData = data
-                self.firstData = self.arrayData.first
-                self.arrayData.remove(at: 0)
+                
+                if let i = self.arrayData.firstIndex(where: { $0.countryName.contains("합계") }) {
+                    self.firstData = self.arrayData[i]
+                    self.arrayData.remove(at: i)
+                }
+
                 self.updateData(on: self.arrayData)
 
             case .failure(let error):

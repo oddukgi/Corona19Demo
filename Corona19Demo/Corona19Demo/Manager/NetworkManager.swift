@@ -39,9 +39,8 @@ enum CoronaDBCodingKeys: String, CodingKey {
 
 class NetworkManager {
     static let shared = NetworkManager()
-    let baseURL       = "https://api.corona-19.kr/korea/country/new"
-    
-
+    let apiKey        = "07a632f3730d2c6a60a623a59ba3d603b"
+    let baseURL       = "https://api.corona-19.kr/korea/country/new/?serviceKey"
 
     //다른 클래스에서 공유하지 않기 위해
     //private 선언
@@ -49,7 +48,7 @@ class NetworkManager {
     
     // return : [Follower]
     func getCoronaData(completed: @escaping (Result<[CoronaModel], GFError>) -> Void) {
-        let endpoint = baseURL
+        let endpoint = baseURL + "=" + apiKey
     
         var coronaArray = Array<CoronaModel>()
         // background thread
