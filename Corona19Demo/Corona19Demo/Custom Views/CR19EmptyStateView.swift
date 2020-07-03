@@ -21,9 +21,8 @@ class CR19EmptyStateView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(message: String) {
+    init() {
       super.init(frame: .zero)
-      messageLabel.text = message
       configure()
     }
       
@@ -48,6 +47,10 @@ class CR19EmptyStateView: UIView {
           logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
           logoImageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 90)
       ])
+    }
+    
+    func updateMessage(message: String) {
+        messageLabel.text = message
     }
 
 }

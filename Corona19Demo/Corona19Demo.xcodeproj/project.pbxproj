@@ -13,6 +13,7 @@
 		120ADC65248F492A00FB9059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 120ADC64248F492A00FB9059 /* Assets.xcassets */; };
 		120ADC68248F492A00FB9059 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 120ADC66248F492A00FB9059 /* LaunchScreen.storyboard */; };
 		1232B583249105350081FF13 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232B582249105350081FF13 /* UILabel+Ext.swift */; };
+		1240ED4D24AF279800B227DE /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1240ED4C24AF279700B227DE /* UIView+Ext.swift */; };
 		1264986124A21610009AE050 /* CR19EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264986024A21610009AE050 /* CR19EmptyStateView.swift */; };
 		12B60CB0248F6FCF000B3210 /* CityDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CAF248F6FCF000B3210 /* CityDataCell.swift */; };
 		12B60CB3248F70A9000B3210 /* CR19TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B60CB2248F70A9000B3210 /* CR19TitleLabel.swift */; };
@@ -35,6 +36,7 @@
 		120ADC67248F492A00FB9059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		120ADC69248F492A00FB9059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1232B582249105350081FF13 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		1240ED4C24AF279700B227DE /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Ext.swift"; path = "../../../../../Study/Sean Allen/iOS Dev Take Home Project/Project/GHFollower/GHFollowers/Extension/UIView+Ext.swift"; sourceTree = "<group>"; };
 		1264986024A21610009AE050 /* CR19EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR19EmptyStateView.swift; sourceTree = "<group>"; };
 		12B60CAF248F6FCF000B3210 /* CityDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataCell.swift; sourceTree = "<group>"; };
 		12B60CB2248F70A9000B3210 /* CR19TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR19TitleLabel.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				12B60CBF248F83F8000B3210 /* UIViewController+Ext.swift */,
+				1240ED4C24AF279700B227DE /* UIView+Ext.swift */,
 				1232B582249105350081FF13 /* UILabel+Ext.swift */,
 			);
 			path = Extensions;
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1240ED4D24AF279800B227DE /* UIView+Ext.swift in Sources */,
 				12B60CB0248F6FCF000B3210 /* CityDataCell.swift in Sources */,
 				12B60CC0248F83F8000B3210 /* UIViewController+Ext.swift in Sources */,
 				12B60CBB248F81F2000B3210 /* ErrorMessage.swift in Sources */,

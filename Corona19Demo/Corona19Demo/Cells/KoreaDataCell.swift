@@ -11,7 +11,7 @@ import UIKit
 class KoreaDataCell: UICollectionViewCell {
       static let reuseIdentifier = "KoreaDataCell"
 
-    let infoLabel = CR19TitleLabel(textAlignment: .left, fontSize: 20)
+    let infoLabel = CR19TitleLabel(textAlignment: .left, fontSize: 18)
       
       override init(frame: CGRect) {
           super.init(frame: frame)
@@ -35,12 +35,12 @@ class KoreaDataCell: UICollectionViewCell {
             infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
          
           ])
-          infoLabel.textColor = UIColor.systemBlue
+        infoLabel.textColor = UIColor.black
       }
     
      func set(model: CoronaModel) {
          
-       infoLabel.text = "대한민국 \n 확진자: \(model.totalCase), 완치자: \(model.recovered), 사망자: \(model.death)"
+       infoLabel.text = "대한민국 \n 확진자: \(model.totalCase)\t 완치자: \(model.recovered)\n 사망자: \(model.death)"
      
      }
      

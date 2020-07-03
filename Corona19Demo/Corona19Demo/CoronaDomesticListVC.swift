@@ -19,6 +19,7 @@ class CoronaDomesticListVC: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Int, CoronaModel>! = nil
     var searchBar: UISearchBar!
     var coronaCollectionView: UICollectionView! = nil
+    var containerView : UIView!
     
     var arrayData: [CoronaModel] = []
     var filteredCoronaModel: [CoronaModel] = []
@@ -32,6 +33,7 @@ class CoronaDomesticListVC: UIViewController {
         super.viewDidLoad()
         
         createSearchController()
+        createEmptyStateView()
         createDismissKeyboard()
         createRefreshButton()
         configureHierarchy()
@@ -43,6 +45,16 @@ class CoronaDomesticListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func createEmptyStateView() {
+        let width = view.bounds.width
+        let height = view.bounds.height
+        
+        emptyStateView = CR19EmptyStateView()
+        view.addSubview(emptyStateView)
+        emptyStateView.frame = CGRect(x: 0, y: 80, width: width, height: height)
+        emptyStateView.isHidden = true
     }
      
 
@@ -112,23 +124,15 @@ extension CoronaDomesticListVC {
 
     }
     
-    func showEmptyStateView(with message: String, in view: UIView) {
-        emptyStateView = CR19EmptyStateView(message: message)
-        emptyStateView.frame = view.bounds
-        view.addSubview(emptyStateView)
-        
-        
+    func showEmptyStateView(with message: String) {
+        emptyStateView.updateMessage(message: message)
+        emptyStateView.isHidden = false
     }
     
-    func hideEmptyStateView(_ isVisible: Bool) {
-        
-        guard parent != nil else {
-            return
-        }
-
-        willMove(toParent: nil)
-        emptyStateView.removeFromSuperview()
+    func hideEmptyStateView() {
+        emptyStateView.isHidden = true
     }
+    
     func getCoronaModel() {
         NetworkManager.shared.getCoronaData() { [weak self] result in
             
@@ -138,7 +142,7 @@ extension CoronaDomesticListVC {
             case .success(let data):
         
                 DispatchQueue.main.async {
-                    self.hideEmptyStateView(true)
+                    self.hideEmptyStateView()
                     self.checkHiddenResource(false)
                 }
                 self.arrayData = data
@@ -159,7 +163,7 @@ extension CoronaDomesticListVC {
                    DispatchQueue.main.async {
                     
                     self.checkHiddenResource(true)
-                    self.showEmptyStateView(with: message, in: self.view)
+                    self.showEmptyStateView(with: message)
                    }
                }
                 
@@ -255,10 +259,10 @@ extension CoronaDomesticListVC {
         refreshButton.addTarget(self, action: #selector(refreshList), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            refreshButton.topAnchor.constraint(equalTo: searchBar.topAnchor),
+            refreshButton.topAnchor.constraint(equalTo: searchBar.topAnchor, constant: -7),
             refreshButton.leadingAnchor.constraint(equalTo: searchBar.trailingAnchor),
-            refreshButton.widthAnchor.constraint(equalToConstant: 60),
-            refreshButton.heightAnchor.constraint(equalToConstant: 60)
+            refreshButton.widthAnchor.constraint(equalToConstant: 80),
+            refreshButton.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     
