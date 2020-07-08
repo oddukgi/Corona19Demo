@@ -15,7 +15,7 @@ Data shows by region. (Seoul, Daegu, Jeju)
 ![main.png](img/main.png)
 
 ### Empty Stateview
-![emptyview.png](img/emptyview.png)
+![emptyview.png](img/empty.png)
 
 
 
