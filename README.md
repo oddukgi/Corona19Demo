@@ -12,10 +12,11 @@ Data shows by region. (Seoul, Daegu, Jeju)
 
 ## Screenshot 
 ### Main Screen
-![main화면.png](img/main%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB.png)
+![main.png](img/main.png)
 
 ### Empty Stateview
 ![emptyView.png](img/emptyView.png)
+
 
 ## Author
 oddukgi 😎 (sm.kang666@gmail.com)
